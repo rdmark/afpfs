@@ -14,7 +14,11 @@
 
 // protocol types
 enum DDPProtocol {
-	kDDPRTMP = 1, kDDPNBP, kDDPATP, kDDPAEP
+	kDDPRTMP = 1,			// Routing Table Maintenance Protocol
+	kDDPNBP,			// Name Binding Protocol
+	kDDPATP,			// AppleTalk Transaction Protocol
+	kDDPAEP,			// AppleTalk Echo Protocol
+	kDDPRTMPRequest			// Routing Table Maintanance Protocol nonrouter node requests
 	};
 
 // well-known sockets

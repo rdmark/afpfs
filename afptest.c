@@ -1,22 +1,24 @@
 /*
-	main.c
-
+	afptest.c
+	
 	Test suite
 	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
 	Wed Aug 28 19:21:58 IST 1996
-
+	
 	"Look at you now and see who you will be"
 	--The Devil You Know, Jesus Jones;  Perverse
 */
 
-#include <pwd.h>
-#include <unistd.h>
+#include <asm/byteorder.h>
+#include <asm/errno.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <sys/uio.h>
 
+#include <pwd.h>
+#include <unistd.h>
 #include <stdio.h>
 
 #include "nbp.h"
@@ -44,7 +46,7 @@ return s;
 /*	main
 	Entry point
 
-	afptest [-n] [server]
+	afptest [-u userName] [server]
 */
 int main(
 	int		argc,
@@ -62,13 +64,11 @@ AFPVolume volume;
 AFPDirectory directory, subDirectory;
 AFPFork fork;
 unsigned long dataForkLength;
-int inhibitLookup = 0;
 const char *serverName = NULL, *userName = NULL, *password = NULL;
 
 /* parse the options */
 while (argv++, --argc > 0) {
 	if ((*argv)[0] == '-') switch ((*argv)[1]) {
-		case 'n':	inhibitLookup = 1;
 		case 'u':	if (argc <= 1) return fprintf(stderr, "afptest: -u option requires user name\n"), 1;
 				userName = *++argv; --argc;
 				break;
@@ -111,33 +111,61 @@ else if (strcmp(filter.type, "AFPServer") != 0)
 	local.sat_addr.s_net = ATADDR_ANYNET;
 	local.sat_addr.s_node = ATADDR_ANYNODE;
 	local.sat_port = ATADDR_ANYPORT;
-	if (bind(s, (struct sockaddr*) &local, sizeof local) < 0)
-		return fprintf(stderr, "afptest: can't bind socket (%d)\n", errno), 1;
+	if (bind(s, (struct sockaddr*) &local, sizeof local) < 0) {
+		fprintf(stderr, "afptest: can't bind socket (%d)\n", errno);
+		
+		/* I think I'm close to figuring out what the dependency on netatalk is.
+		   EADDRNOTAVAIL is returned if `bind' finds no `AppleTalk interfaces'.
+		   There apparently is an ioctl to do that, and that's probably what atalkd
+		   does for me now.  So I just need to do it myself and then I will be rid
+		   of netatalk altogether. */
+		if (errno == EADDRNOTAVAIL) fprintf(stderr, "  Is netatalk installed?\n");
+		return 1;
+		}
 
-	/* see if there is a router */
-	/*
-	if (RTMPRequest(s))
-		fprintf(stderr, "afptest: couldn't look for router (%d)\n", errno);
-	else
-		fprintf(stderr, "found router\n");
-	*/
+	/* see if there is a router */ {
+		unsigned network;
+		struct sockaddr_at router;
+		if (RTMPRequest(s, &network, &router))
+			fprintf(stderr, "no router found\n");
+		
+		else {
+			fprintf(stderr, "found router (%hu@%hu) declaring our network %u\n",
+				router.sat_addr.s_node,
+				ntohs(router.sat_addr.s_net),
+				network
+				);
+			
+			/* AppleTalk network numbers in nonrouter nodes are supposed to be obtained
+			   dynamically by an RTMP stub.  Unfortunately, netatalk apparently has no
+			   way of obtaining its own network number other than by hard-coding in its
+			   configuration.  If the network number it picks is not the network number
+			   our router says we are on, routing does not work.  I can't imagine why
+			   there should be any network-theoretical objection to this working, though I
+			   can hypothesize some.  In any case, it is clear empirically that it doesn't,
+			   so the user should probably fix this. */
+			}
+		}
 
 	/* look up a server */
 	if (NBPLookup(s, &entity, 1, &filter) < 1)
 		return fprintf(stderr, "afptest: can't find entity (%d)\n", errno), 1;
 	(void) NBPExpress(found, &entity);
-	fprintf(stderr, "found \"%s\"\n", found);
+	fprintf(stderr, "found \"%s\" at %hu@%hu\n",
+		found,
+		entity.address.sat_addr.s_node,
+		ntohs(entity.address.sat_addr.s_net)
+		);
 
 	/* ping the node */
 	if (AEPRequest(s, &entity.address.sat_addr, &time))
 		return fprintf(stderr, "afptest: no response (%d)\n", errno), 1;
-	fprintf(stderr, "node responded in %u ms\n", time.tv_usec / 1000 + time.tv_sec * 1000);
+	fprintf(stderr, "responded in %u ms\n", time.tv_usec / 1000 + time.tv_sec * 1000);
 
 	close(s);
 	}
 
-/* get server information without a connection */
-{
+/* get server information without a connection */ {
 	unsigned i;
 	char *v;
 
@@ -172,8 +200,7 @@ if (! (afp = AFPLogin(&entity.address, &server, userName, password))) {
 	return 1;
 	}
 
-/* get the volume names */
-{
+/* get the volume names */ {
 	int i;
 	char **v = volumes;
 	time_t serverTime;

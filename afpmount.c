@@ -13,10 +13,14 @@
 	--Die Like a Dog, Curve;  Cherry EP
 */
 
+#include <asm/types.h>
 #include <sys/mount.h>
 #include <sys/types.h>
+#include <sys/uio.h>
 #include <sys/socket.h>
 #include <linux/atalk.h>
+
+// following needed `ben-linux' for MS_MGC_VAL, not on `winblowz'
 #include <linux/fs.h>
 
 #include <errno.h>
@@ -37,6 +41,7 @@ const char gUsage[] =
 	"	server		name of AppleShare server\n"
 	"	zone		AppleShare zone where server is located, else default zone\n"
 	"	volume		name of volume to mount\n"
+	/* "	-s		don't mount, but list available servers\n" */
 	/* "	-v		don't mount, but list available volumes\n" */
 	"	-u		mount as specified AppleShare user, else as `Guest'\n"
 	"	-p		with '-u', password to log in under (will prompt if not specified)\n";
@@ -58,6 +63,7 @@ NBPEntity search, entity;
 int addresslen = sizeof entity.address;
 bool
 	doMount = true,				// mount volume
+	doListServers = false,			// list servers on network
 	doListVolumes = false;			// list volumes on server
 const char
 	*mountp = NULL,
@@ -79,7 +85,10 @@ while (++argv, --argc > 0)
 				break;
 		
 		#if 0
-		/* get list of mounted volumes */
+		/* get list of servers */
+		case 's':	doMount = false; doListServers = true; break;
+		
+		/* get list of volumes */
 		case 'v':	doMount = false; doListVolumes = true; break;
 		#endif
 		

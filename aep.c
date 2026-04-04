@@ -13,12 +13,11 @@
 	--The Right Decision, Jesus Jones;  Perverse
 */
 
+#include <asm/types.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/time.h>
-
 #include <linux/atalk.h>
-
 
 #include "mac.h"
 #include "ddp.h"

@@ -17,7 +17,7 @@ kernel/%.o			: %.c
 # try to avoid platform dependencies
 # *** should compile with warnings on (-Wall)
 CFLAGS = -D_POSIX_SOURCE -fstrict-prototypes
-CFLAGSKERNEL = $(CFLAGS) -I/usr/src/linux/src/export-osfmach3/osfmach3_ppc/include -DMODULE -D__KERNEL__ -O2
+CFLAGSKERNEL = $(CFLAGS) -DMODULE -D__KERNEL__ -O2
 
 # compile with debug code and symbolic debugging information
 CFLAGS += -DDEBUG
@@ -29,7 +29,8 @@ all				: afpfs afpmount afptest
 clean				:
 	rm -rf kernel/* obj/*
 
-distribution			: README.html BUGS CHANGES afptest afpfs afpmount
+distribution			: all clean \
+				  README.html BUGS CHANGES afptest afpfs afpmount
 	(cd ..; tar cfz afpfs.tar.gz \
 		afpfs/afptest afpfs/afpfs afpfs/afpmount \
 		afpfs/README.html afpfs/BUGS afpfs/CHANGES \
@@ -53,14 +54,15 @@ afpfs				: kernel/ \
 
 
 # mount program
-afpmount			: afpmount.c \
+afpmount			: afpmount.c obj/ \
 				  obj/afp.o obj/asp.o obj/atp.o \
-				  obj/nbp.o obj/timer.o obj/mac.o
-
+				  obj/nbp.o obj/timer.o obj/mac.o obj/rtmp.o
+	$(CC) -o $@ afpmount.c obj/*.o
 
 # test application
-afptest				: obj/afptest.o obj/mac.o obj/timer.o \
+afptest				: afptest.c obj/ \
+				  obj/mac.o obj/timer.o \
 				  obj/nbp.o obj/afp.o obj/asp.o obj/atp.o \
 				  obj/rtmp.o obj/aep.o
-	$(CC) -o $@ obj/*.o
+	$(CC) -o $@ afptest.c obj/*.o
 

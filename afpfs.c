@@ -326,7 +326,8 @@ Abort:
    a way of returning a specific code.  Note also that we can't return the
    code in the `param' structure itself, since it is only a copy of the
    original in the user's address space. */
-if (param->error) put_fs_long(errno, param->error);
+if (param->error) memcpy_tofs(param->error, &errno, sizeof errno);
+	// put_fs_long(errno, param->error);
 
 AFPFSPutSuper(sb);			/* caller doesn't return the superblock on failure */
 return NULL;

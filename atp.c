@@ -31,6 +31,7 @@ NOTE
 */
 
 #include <asm/byteorder.h>
+#include <asm/types.h>
 
 #include <sys/types.h>
 #include <sys/time.h>
@@ -39,8 +40,7 @@ NOTE
 #include <sys/socket.h>
 
 #ifdef __KERNEL__
-// #include <asm/errno.h>
-#include <sys/errno.h>
+#include <linux/errno.h>
 
 struct sk_buff;
 #include <linux/if_ether.h>

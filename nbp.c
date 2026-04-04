@@ -18,15 +18,14 @@ NOTE
 	--Darkness, The Police;  Ghost in the Machine
 */
 
-#include <bytesex.h>
 #include <errno.h>
 
+#include <asm/types.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 
 #include <linux/atalk.h>
 
-#include <stdio.h>
 #include "mac.h"
 #include "ddp.h"
 #include "nbp.h"
@@ -143,17 +142,14 @@ struct {
 	} lookup = {
 	{ kDDPNBP,
 		#if __BYTE_ORDER == 1234
-		1, nbpLkUp,
+		1, search->zone[0] ? nbpBrRq : nbpLkUp,
 		#else
-		nbpLkUp, 1,
+		search->zone[0] ? nbpBrRq : nbpLkUp, 1,
 		#endif
 		htons(gID++)
 		}
 	};
 char *l = &lookup.header.tuples[0].nameLength;
-
-/* ***** can't look up in zones yet */
-if (search->zone[0] != '\0' && strcmp(search->zone, "*") != 0) return 1;
 
 /* assemble the lookup tuple */
 {
@@ -173,25 +169,38 @@ if (search->zone[0] != '\0' && strcmp(search->zone, "*") != 0) return 1;
 	l = c2pstrncpy(l, search->zone[0] != '\0' ? search->zone : "*", 32);
 	}
 
-/* who to send the look-up request to */
+// zone specified?
+if (search->zone[0]) {
+	// find a router through which to look up
+	if (RTMPRequest(s, NULL, &address)) goto Abort;
+	}
+
+else {
+	// net specified which is not the local network?
+	address.sat_addr.s_net = htons(
+		search->address.sat_addr.s_net ? search->address.sat_addr.s_net :
+		!strcmp(search->zone, "*") ? local.sat_addr.s_net :
+		ATADDR_ANYNET
+		);
+	
+	// look up at specified node, else broadcast to network
+	address.sat_addr.s_node =
+		search->address.sat_addr.s_node ? search->address.sat_addr.s_node :
+		!strcmp(search->object, "=") ? local.sat_addr.s_node :
+		ATADDR_BCAST;
+	}
 address.sat_family = AF_APPLETALK;
-address.sat_addr.s_net =
-	search->address.sat_addr.s_net ? search->address.sat_addr.s_net :
-	!strcmp(search->zone, "*") ? local.sat_addr.s_net :
-	ATADDR_ANYNET;
-address.sat_addr.s_node =
-	search->address.sat_addr.s_node ? search->address.sat_addr.s_node :
-	!strcmp(search->object, "=") ? local.sat_addr.s_node :
-	ATADDR_BCAST;
 address.sat_port = nbpnisSocket;
 
-/* look up */
+// look up
 while (numReceived < maxReceive && tries-- > 0) {
 	struct {
 		struct Packet	header;
 		struct Tuple	_tuple[4];
 		} reply;
 	signed int length;
+	struct sockaddr_at responder;
+	int responderl = sizeof responder;
 
 	/* broadcast the request */
 	if (!NewTimer(&timer, NULL, 5, 5)) goto Abort;
@@ -202,7 +211,7 @@ while (numReceived < maxReceive && tries-- > 0) {
 		numReceived < maxReceive &&
 
 		/* no error on the socket? */
-		(length = recvfrom(s, &reply, sizeof reply, 0, NULL, NULL)) >= 0
+		(length = recvfrom(s, &reply, sizeof reply, 0, (struct sockaddr*) &responder, &responderl)) >= 0
 		) if (
 		/* received at least a header? */
 		length >= sizeof reply.header &&

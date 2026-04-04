@@ -32,7 +32,6 @@ NOTE
 */
 
 #include <asm/byteorder.h>
-
 #include <sys/uio.h>
 
 #include <limits.h>

@@ -10,6 +10,7 @@
 #ifndef MAC_H
 #define MAC_H
 
+#include <linux/types.h>
 #include <asm/types.h>
 
 

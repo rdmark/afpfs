@@ -18,6 +18,8 @@ BUGS
 	negates handling of these timers.
 */
 
+// following needed `ben-linux', not `winblowz'
+#include <asm/signal.h>
 #include <errno.h>
 #include <signal.h>
 #include <time.h>
@@ -28,7 +30,7 @@ BUGS
 extern int errno;
 
 static Timer *gTimers;			/* list of timers *** could maintain sort order */
-static struct sigaction gOldAction, gAction = { &CallTimers, 0, 0, NULL };
+static struct sigaction gOldAction, gAction = { &CallTimers, 0, 0, 0 };
 
 
 

@@ -19,7 +19,6 @@ struct sk_buff;
 #include <linux/types.h>
 #include <linux/if_ether.h>
 #include <linux/atalk.h>
-#include <linux/fs.h>
 
 #include "afp.h"
 
