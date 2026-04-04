@@ -1,0 +1,17 @@
+.\"
+.\" Copyright 1997 by: Ben Hekster <heksterb@acm.org>
+.\"
+.TH ATPSendRequest 3  "9 January 1997" "afpfs" "ATP"
+.SH NAME
+ATPSendRequest \- Send an ATP request
+.SH SYNOPSIS
+.B #include \"atp.h\"
+.sp
+.BI "ATPError ATPSendRequest(struct ATP*, ATPTransaction*, const struct sockaddr_at*, ATPFlags, unsigned int timeout, unsigned int tries, int32 requestUserBytes, const struct iovec *request, int32 *responseUserBytesp, struct iovec *response);"
+.SH DESCRIPTION
+The function sends a request through a previously opened ATP socket and
+optionally waits for a reply.
+.SH "RETURN VALUES"
+Returns a negative result code upon failure, or 0.
+.SH SEE ALSO
+.BR ATPOpenSession(3)

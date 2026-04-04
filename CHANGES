@@ -1,0 +1,42 @@
+
+	CHANGES
+
+	AppleTalk Filing Protocol file system for Unix
+	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
+
+	Mon Sep 29 22:38:16 IST 1997
+
+	http://www.odyssey.co.il/~heksterb/Software/afpfs/
+
+
+1.0b1
+*	More meaningful error messages returned
+*	Successfully mounts `netatalk' exported volumes
+*	Support server notifications
+
+1.0a6 (1997/09/30)
+*	MkLinux port
+*	Fixed handling of interrupted system calls
+*	Bug fixes
+
+1.0a5 (1997/07/26)
+*	Fixed ATP-- should work a lot better
+*	Fixed ASP so that writing to volumes should work
+*	Fixed tickle timers, sort of-- it'll be ok for now
+-	Same (low) speed as Finder copying large files to our Centris
+	running System 7.5 file sharing...
+
+1.0a4 (1997/07/19)
+*	Fixed ASP sequence synchronization after transaction failure
+*	Fixed timeout logic
+*	Fixed NBP lookup
+*	Fixed kernel-level socket code
+*	Implemented client-side AEP and RTMP
+*	Authenticated (cleartext) login
+
+1.0a3 (1997/07/12)
+*	Rewrote NBP lookup and afptest, work better
+
+1.0a2 (1997/05/11)
+*	Fixed the distribution so that it will now at least compile
+

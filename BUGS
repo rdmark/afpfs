@@ -1,0 +1,43 @@
+
+	BUGS
+
+	AppleTalk Filing Protocol file system for Linux
+	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
+
+	Mon Sep 29 22:36:26 IST 1997
+
+	http://www.odyssey.co.il/~heksterb/Software/afpfs
+
+
+I haven't yet begun collecting and collating an exhaustive list of
+all bugs and limitations in AFPFS;  for the time being I'm just
+adding things as they come to mind.
+
+
+Zone look-ups probably don't work yet-- I haven't tested it because I
+don't have access to a Mac in a multiple zone-network.  Specifying the
+zone numerically is probably most likely to work.
+
+I don't deal at all yet with resource forks or creator signatures/file
+types.  Since these concepts don't have any meaning on the Linux side
+their absence will not affect you on this side, but files created on the
+Macintosh though afpfs will be affected.  Any solution for creator/types
+will probably involve file extensions.  A solution for resource forks
+may be found in the `.AppleDouble' directory mechanism.
+
+I am also considering how best to implement CR/LF translation for text files.
+
+I'm not doing any mapping of user names yet-- all files and directories
+are made owned by the user who performed the mount.  This is actually
+fairly logical.
+
+I realize now that some, if not all, of the protocols should have been
+implemented as kernel-level protocols.  That is, it should be possible
+to open an ASP socket using the socket(2) system call.  I will most
+likely change the implementation to do things this way.
+
+There is no documentation for the AppleTalk protocol implementation APIs.
+Does anybody think this would be useful?
+
+I also haven't looked hard at simultaneously mounting multiple volumes
+from the same server.
