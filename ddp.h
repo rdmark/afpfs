@@ -1,9 +1,12 @@
 /*
 	ddp
-
+	
 	AppleTalk Datagram Delivery Protocol
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Thu Jul 17 20:30:08 IST 1997
 
 	Not implemented-- relies on kernel DDP support

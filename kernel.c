@@ -1,22 +1,20 @@
 /*
 	kernel.c
-
+	
 	Kernel support
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Wed Oct 23 17:08:09 IST 1996
-
+	
 	These are implementations of kernel and libc functions which are
 	not available to kernel code.
 	
 	Note that separating these functions in this way has the effect
 	of making the rest of the code independent of particular kernels
 	or even whether it is part of a kernel or not.
-	
-	"Just when I thought I could not be stopped
-	When my chance came to be king
-	The ghost of my life grew wilder than the wind"
-	--Ghosts, Japan;  Tin Drum
 */
 
 #include "kernel.h"

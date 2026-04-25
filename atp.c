@@ -1,9 +1,12 @@
 /*
 	atp.c
-
+	
 	AppleTalk Transaction Protocol
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Sun Oct 27 14:14:19 IST 1996
 
 NOTE
@@ -22,12 +25,6 @@ NOTE
 NOTE
 	Because the user bytes are passed as an integer parameter, the
 	caller does not have to do endian-conversion on them.
-
-	"Children waiting for the day the feel good
-	`Happy birthday, happy birthday'
-	Made to feel the way that every child should
-	`Sit and listen, sit and listen'"
-	--Mad World, Tears for Fears;  The Hurting
 */
 
 #include <asm/byteorder.h>

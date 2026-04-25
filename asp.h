@@ -1,16 +1,13 @@
 /*
 	asp.h
-
+	
 	AppleTalk Session Protocol, Workstation
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Mon Oct 21 17:52:49 IST 1996
-
-	"It's opening time down on Fascination Street
-	So let's cut the conversation and get out a little bit
-	'Cause I feel it all fading and paling
-	and I'm begging to drag you down with me"
-	--Fascination Street, The Cure;  Disintegration
 */
 
 #ifndef ASP_H

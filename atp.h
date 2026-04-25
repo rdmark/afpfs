@@ -1,9 +1,12 @@
 /*
 	atp.h
-
+	
 	AppleTalk Transaction Protocol
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Sun Oct 27 14:14:19 IST 1996
 
 BUGS

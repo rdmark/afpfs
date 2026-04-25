@@ -2,15 +2,12 @@
 	asp.c
 	
 	AppleTalk Session Protocol, Workstation
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
 	
 	Tue Oct 22 11:52:08 IST 1996
-	
-	"Damcha hit'arev badami
-	Veani bechalomcha overet
-	Eifoh atah matchil
-	veeifoh ani nigmeret?"
-	--Ha'im atah meushar, Rita
 */
 
 #include <errno.h>

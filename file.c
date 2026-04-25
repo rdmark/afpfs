@@ -1,19 +1,18 @@
 /*
 	file.c
-
+	
 	Linux file system for AppleTalk Filing Protocol
 	file (fork) operations
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Mon Dec 16 15:08:10 IST 1996
 
 REFERENCES
 	"Advanced Programming in the UNIX Environment", W. Richard Stevens,
 	Addison-Wesley
-
-	"There's no truth in the lie that only angels cry
-	when everybody knows we're all born to die"
-	--Edge to Life, Recoil;  Bloodline
 */
 
 #include <asm/segment.h>

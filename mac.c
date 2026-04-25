@@ -1,9 +1,12 @@
 /*
 	mac.c
-
+	
 	Macintosh data types
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Thu Oct 24 17:11:47 IST 1996
 */
 

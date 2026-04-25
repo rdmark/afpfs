@@ -2,12 +2,12 @@
 	afptest.c
 	
 	Test suite
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
 	
 	Wed Aug 28 19:21:58 IST 1996
-	
-	"Look at you now and see who you will be"
-	--The Devil You Know, Jesus Jones;  Perverse
 */
 
 #include <asm/byteorder.h>

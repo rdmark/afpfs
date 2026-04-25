@@ -1,17 +1,14 @@
 /*
 	inode.c
-
+	
 	Linux file system for AppleTalk Filing Protocol
 	inode (file) operations
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Mon Dec 16 15:15:29 IST 1996
-
-	"So when the hurting starts
-	and when the nightmares begin
-	Remember you can fill up the sky
-	You don't have to give in"
-	--Fight, The Cure;  Kiss Me Kiss Me Kiss Me
 */
 
 #include <asm/segment.h>

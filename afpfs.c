@@ -1,18 +1,16 @@
 /*
 	afpfs.c
-
+	
 	Linux file system for AppleTalk Filing Protocol
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Tue Oct 29 17:11:48 IST 1996
 
 BUGS
 	Does not support symbolic links (aliases)
-
-	"Ich fuerchte keine Einsamkeit
-	Provoke these frozen faces!
-	Es gibt keine Barmhaerzigkeit"
-	--Frozen Faces, Propaganda;  A Secret Wish
 */
 
 #include <linux/sched.h>

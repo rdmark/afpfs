@@ -1,16 +1,13 @@
 /*
 	kernel.h
-
+	
 	Kernel support
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Wed Oct 23 17:08:09 IST 1996
-
-	"Only love she sees
-	He controls on love
-	Life mirrors a cure
-	Everything is possible in the game of life"
-	--Promised You a Miracle, Simple Minds;  New Gold Dream
 */
 
 #ifdef __KERNEL__

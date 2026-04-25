@@ -1,15 +1,13 @@
 /*
 	afp.h
-
+	
 	AppleTalk Filing Protocol, Workstation
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Mon Oct 21 17:39:38 IST 1996
-
-	"It's just a little too late
-	It's never enough to swallow those pills
-	Now I'm sick and always will be"
-	--Coast is Clear, Curve;  Frozen EP
 */
 
 #ifndef AFP_H

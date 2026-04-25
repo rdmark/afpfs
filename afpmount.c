@@ -1,16 +1,13 @@
 /*
 	afpmount
-
+	
 	Mount afpfs volumes
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Thu Jan  9 16:11:29 IST 1997
-
-	"I'm just trying not to die like a dog
-	End up alone, wheezing from the smog
-	I'm just trying not to die in vain
-	Got to leave my mark, stake my claim"
-	--Die Like a Dog, Curve;  Cherry EP
 */
 
 #include <asm/types.h>

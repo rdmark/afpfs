@@ -1,14 +1,13 @@
 /*
 	afpfs.h
-
+	
 	Linux file system for AppleTalk Filing Protocol
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Tue Oct 29 17:11:48 IST 1996
-
-	"You're all right, there's nothing wrong
-	Self-sufficience please, and get to work"
-	--Army of Me, Bjo:rk;  Post
 */
 
 #ifndef AFPFS_H
