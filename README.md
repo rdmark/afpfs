@@ -8,12 +8,6 @@ From the first release on January 24, 1984, a complete and well-designed network
 
 In addition, the various protocol layers are completely independent APIs and available to authors of other AppleTalk-based software. In particular, `afpfs` provides interfaces to the workstation sides of the following AppleTalk protocols: AEP, ATP, ASP, AFP, and NBP.
 
-There is a mailing list where announcements regarding new releases of AFPFS are posted. To subscribe, send a message containing just the line:
-
-> subscribe afpfs-list `Your Real Name`
-
-to <listproc@odyssey.co.il>.
-
 ### Requirements
 
 To use `afpfs`, you need root access to a machine running either MkLinux or the original Intel-based Linux operating system. I have been developing it on current kernels, and GNU C and libc, and I do not know under which older versions it will not run. You must have compiled AppleTalk (DDP) support into your kernel. Your kernel must support the ELF binary format and loadable modules-- I have not tried compiling it directly into the kernel, but I suppose it should be possible without too much effort.
@@ -27,13 +21,6 @@ For some reason, `afpfs` appears to require [netatalk](http://www.umich.edu/~rsu
 **The 1.0 beta 1 release is now available for both MkLinux and Intel-based Linux!** I am actively soliciting feedback and bug reports-- since this is my first Unix kernel-level project, I especially welcome comments, criticisms, and suggestions from more seasoned hackers.
 
 `afpfs` is available in source code form, and as precompiled binaries for PowerPC-based MkLinux and Intel-based Linux. Note that the MkLinux binary supports current kernels (I use 2.0.33), whereas the i386 Linux binary does not. If someone would provide me with a compiled version for current i386 Linux kernels, I'll be happy to put it up here. Refer to the \`BUGS' and \`CHANGES' files in the distributions for more information.
-
-- [ Known bugs (text)](BUGS)
-- [ Change log (text)](CHANGES)
-- [ MkLinux kernel module (2.0.33 kernels) (gzip, tar; 141 kB)](MkLinux/afpfs.tar.gz)
-- [ MkLinux kernel module (2.0.28 kernels) (gzip, tar; 231 kB)](MkLinux/afpfs-2.0.28.tar.gz)
-- [ Intel-based kernel module (2.0.28 kernels) (gzip, tar; 181 kB)](i386/afpfs.tar.gz)
-- [ Source code distribution (gzip, tar; 54 kB)](afpfs.tar.gz)
 
 ### Installation
 
