@@ -1,16 +1,13 @@
 /*
 	aep
-
+	
 	AppleTalk Echo Protocol, client
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Thu Jul 17 20:08:37 IST 1997
-
-	"When they say ignorance is bliss
-	they make it sound too good to miss
-	And the problem with success
-	is you become what you detest"
-	--The Right Decision, Jesus Jones;  Perverse
 */
 
 #include <asm/types.h>

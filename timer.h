@@ -1,13 +1,13 @@
 /*
 	timer.h
-
+	
 	Timers
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Sun Jan  5 12:43:17 IST 1997
-
-	"Tell me what I'm doing here!"
-	--Ascend, Nitzer Ebb;  Ebbhead
 */
 
 #ifndef TIMER_H

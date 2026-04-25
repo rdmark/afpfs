@@ -1,21 +1,18 @@
 /*
 	nbp.c
-
+	
 	AppleTalk Name-Binding Protocol, Workstation
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Tue Dec 24 14:16:16 IST 1996
 
 NOTE
 	The `server' or registry functions are not yet implemented.
 	These belong in a daemon together with server implementations
 	of ASP and AFP.
-
-	"And on the days that followed
-	I listened to his words
-	I strained to understand him
-	I chased his thoughts like birds"
-	--Darkness, The Police;  Ghost in the Machine
 */
 
 #include <errno.h>

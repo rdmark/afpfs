@@ -1,13 +1,13 @@
 /*
 	nbp.h
-
+	
 	AppleTalk Name-Binding Protocol, Workstation
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Tue Dec 24 14:16:16 IST 1996
-
-	"Life is never enough (it's all you get)"
-	--Lightspan, The Shamen;  En-Tact
 */
 
 #ifndef NBP_H

@@ -2,7 +2,10 @@
 	afp.c
 	
 	AppleTalk Filing Protocol, Workstation
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
 	
 	Mon Oct 21 17:39:38 IST 1996
 	
@@ -21,14 +24,6 @@ NOTE
 	The API does not support short path names, because we are not
 	running under DOS.  You can still use DOS-based AFP servers,
 	though, because they are required to support long path names.
-	
-	"Sink my hands into the sea
-	Reach your fingers up to me
-		Trust me one more time
-		I can only try
-		Throw yourself to me
-	and I'll try to pull you free"
-	--Undertow, Lush;  Split
 */
 
 #include <asm/byteorder.h>

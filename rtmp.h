@@ -1,9 +1,12 @@
 /*
 	rtmp
-
+	
 	AppleTalk Routing Table Maintenance Protocol Stub
-
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Fri Jul 18 00:15:47 IST 1997
 */
 

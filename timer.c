@@ -1,14 +1,13 @@
 /*
 	timer.c
-
+	
 	Timers
-	Copyright (c) 1996-1997 by: Ben Hekster <heksterb@acm.org>
-
+	
+	Copyright (c) 1996-2026 by: Ben Hekster <heksterb@acm.org>
+	Licensed under the MIT License - see LICENSE file for details.
+	SPDX-License-Identifier: MIT
+	
 	Sun Jan  5 12:43:17 IST 1997
-
-	"The city is aching from two thousand years
-	The city is rattling with a million fears"
-	--Reasons, Nitzer Ebb;  Ebbhead
 
 BUGS
 	We do our best to stay out of our client's way by not installing
